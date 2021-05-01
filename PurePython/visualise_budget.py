@@ -20,9 +20,13 @@ def visualise(sums):
     expenses.append(remain)
     categories.append("Remain")
     
-    # Pie chart
-    pie_expenses = [abs(i) for i in expenses if i != 0]
-    categories = categories[:len(pie_expenses)]
+     # Pie chart
+    pie_expenses, pie_categories = list(), list()
+    for i, _ in enumerate(expenses):
+        if expenses[i] != 0:
+            pie_expenses.append(abs(expenses[i]))
+            pie_categories.append(categories[i])
+    
     ax1.pie(pie_expenses, labels = categories, autopct='%1.2f%%',startangle=90)
     ax1.axis('equal')
 
